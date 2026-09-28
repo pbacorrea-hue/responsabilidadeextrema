@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsabilidade Extrema, de Jocko Willink e Leif Babin — vale a pena?</title>
+<meta name="description" content="Resenha completa de Responsabilidade Extrema: como o livro nasceu em Ramadi, do que trata e por que os princípios de liderança dos Navy SEALs se aplicam a qualquer equipe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F4EEE1;
+  --paper-deep: #EAE0CB;
+  --wood-dark: #241B15;
+  --wood-dark-2: #372A20;
+  --oxblood: #8B3A3A;
+  --oxblood-deep: #6E2E2E;
+  --moss: #445D43;
+  --navy: #23344A;
+  --gold: #B8923D;
+  --ink: #2A231D;
+  --ink-soft: #5C5147;
+  --line: #D9CEB8;
+  --line-dark: rgba(244, 238, 225, 0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; margin: 0 0 0.5em; font-weight: 600; line-height: 1.15; color: var(--ink); }
+p { margin: 0 0 1.25em; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+:focus-visible { outline: 3px solid var(--oxblood); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Sticky mini-header with persistent CTA */
+.sticky-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--wood-dark);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line-dark);
+}
+.sticky-bar__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.sticky-bar__title {
+  color: var(--paper);
+  font-family: 'Fraunces', serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+}
+.btn--primary { background: var(--oxblood); color: var(--paper); }
+.btn--primary:hover { background: var(--oxblood-deep); transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(139, 58, 58, 0.5); }
+.btn--ghost { background: transparent; border-color: var(--ink); color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.btn--on-dark.btn--ghost { border-color: var(--paper); color: var(--paper); }
+.btn--on-dark.btn--ghost:hover { background: var(--paper); color: var(--wood-dark); }
+.btn--small { padding: 0.5rem 1.1rem; font-size: 0.8125rem; }
+
+/* Hero */
+.hero { background: var(--wood-dark); padding: 3.5rem 0 4rem; }
+.hero .container { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+@media (min-width: 760px) { .hero .container { grid-template-columns: 260px 1fr; gap: 3.5rem; } }
+
+.book-cover {
+  aspect-ratio: 2 / 3;
+  width: 220px;
+  background: var(--cover-bg, var(--oxblood));
+  color: var(--cover-fg, var(--paper));
+  border-radius: 3px;
+  padding: 1.6em 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+@media (min-width: 760px) { .book-cover { width: 260px; } }
+.book-cover::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 8px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 3px 0 0 3px;
+}
+.book-cover__title { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+.book-cover__author { font-family: 'Inter', sans-serif; font-size: 0.8125rem; letter-spacing: 0.01em; opacity: 0.85; }
+
+.hero h1 { color: var(--paper); font-size: clamp(2rem, 4.5vw, 2.875rem); max-width: 16ch; }
+.hero .author { font-size: 1.0625rem; color: var(--gold); margin-bottom: 1rem; }
+.hero .tagline { color: var(--paper); opacity: 0.85; max-width: 48ch; font-size: 1.0625rem; }
+.hero .cta-row { margin-top: 1.75rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Prose / article body */
+.prose { max-width: 680px; padding: 4.5rem 1.5rem; margin: 0 auto; }
+.prose h2 { font-size: 1.625rem; margin-top: 2.75rem; }
+.prose h2:first-of-type { margin-top: 0; }
+.prose .lead { font-size: 1.1875rem; color: var(--ink-soft); }
+
+/* Principles teaser cards */
+.principles { display: flex; flex-direction: column; gap: 0.9rem; margin: 1.5rem 0 2rem; }
+.principle-card {
+  background: var(--paper-deep);
+  border-left: 3px solid var(--gold);
+  padding: 1rem 1.35rem;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+.benefits-list li { position: relative; padding-left: 1.6em; margin-bottom: 0.9em; color: var(--ink); }
+.benefits-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.5em;
+  width: 8px; height: 8px;
+  background: var(--oxblood);
+  border-radius: 1px;
+}
+
+.who-box {
+  background: var(--paper-deep);
+  border-left: 3px solid var(--moss);
+  padding: 1.5rem 1.75rem;
+  border-radius: 2px;
+  margin: 2rem 0;
+}
+.who-box h3 { font-size: 1.0625rem; margin-bottom: 0.5em; }
+.who-box p { margin: 0; color: var(--ink-soft); }
+
+.cta-banner { background: var(--paper-deep); border-radius: 4px; padding: 2.5rem; margin: 3rem 0; }
+.cta-banner h3 { font-size: 1.375rem; margin-bottom: 0.4em; }
+.cta-banner p { color: var(--ink-soft); margin-bottom: 1.5rem; }
+
+.faq details { border-top: 1px solid var(--line); padding: 1.1rem 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.0625rem; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; float: right; font-family: 'Inter', sans-serif; color: var(--oxblood); }
+.faq details[open] summary::after { content: "\2013"; }
+.faq details p { margin-top: 0.75rem; margin-bottom: 0; color: var(--ink-soft); }
+
+.disclosure {
+  border-left: 3px solid var(--gold);
+  background: var(--paper-deep);
+  padding: 1.1rem 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  border-radius: 2px;
+  margin-top: 2.5rem;
+}
+
+.site-footer { background: var(--wood-dark); color: var(--paper); padding: 3rem 0; }
+.site-footer p { opacity: 0.75; font-size: 0.875rem; max-width: 60ch; margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="container sticky-bar__inner">
+    <span class="sticky-bar__title">Responsabilidade Extrema</span>
+    <a href="https://meli.la/2oJhmuY" class="btn btn--primary btn--small" target="_blank" rel="noopener sponsored">Ver preço</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="book-cover" style="--cover-bg:#A38B5C; --cover-fg:#241B15;">
+      <span class="book-cover__title">Responsabilidade Extrema</span>
+      <span class="book-cover__author">Jocko Willink · Leif Babin</span>
+    </div>
+    <div>
+      <h1>Responsabilidade Extrema</h1>
+      <p class="author">Jocko Willink e Leif Babin · Como os Navy SEALs Lideram e Vencem</p>
+      <p class="tagline">Lições de liderança nascidas no campo de batalha mais perigoso do Iraque — e a ideia central de que todo líder é responsável por tudo o que acontece na sua equipe, sem desculpas.</p>
+      <div class="cta-row">
+        <a href="https://meli.la/2oJhmuY" class="btn btn--primary" target="_blank" rel="noopener sponsored">Ver preço no Mercado Livre</a>
+        <a href="#resenha" class="btn btn--ghost btn--on-dark">Ler a resenha</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<article class="prose" id="resenha">
+  <p class="lead">Escrito por dois oficiais SEAL da Marinha dos EUA que lideraram a unidade de operações especiais mais condecorada da Guerra do Iraque, Responsabilidade Extrema mostra como os princípios de liderança forjados em combate se aplicam a negócios e à vida. Na edição da Alta Books, o livro tem 352 páginas.</p>
+
+  <h2>Sobre o livro</h2>
+  <p>Cada capítulo cruza um episódio real de guerra com um princípio de liderança e explica o que ele é, por que importa e como aplicá-lo em qualquer ambiente de equipe — de temas como cobrir e mobilizar a descentralizar o comando e liderar a cadeia, tanto para cima quanto para baixo.</p>
+
+  <h2>Como o livro nasceu</h2>
+  <p>A unidade SEAL de Jocko Willink e Leif Babin foi enviada a Ramadi, uma das zonas mais violentas do Iraque, com a missão quase impossível de ajudar as forças americanas a proteger uma cidade considerada perdida. Dessa experiência, entre heroísmo, perdas trágicas e vitórias duras, eles concluíram que a liderança, em todos os níveis, é o principal fator entre o sucesso e o fracasso de uma equipe. De volta aos EUA, criaram o treinamento de liderança da nova geração de SEALs e, depois, a Echelon Front, empresa que ensina esses princípios a organizações — de startups a empresas da Fortune 500.</p>
+
+  <h2>Do que se trata</h2>
+  <p>O princípio central que dá nome ao livro é direto: todo líder é responsável por tudo o que acontece em sua equipe, sem culpar terceiros. Um exemplo clássico do livro é quando Willink faz Babin enxergar que, se o comandante fazia tantas perguntas, talvez ele mesmo não estivesse comunicando suas ações de forma eficiente — antes de questionar o chefe, o líder deve olhar para a própria atitude.</p>
+
+  <h3 style="font-size:1.125rem; margin-top:2rem;">Alguns dos princípios que você vai aprender</h3>
+  <div class="principles">
+    <div class="principle-card">Por que aceitar a responsabilidade total pelos resultados da equipe, sem desculpas, é o ponto de partida da boa liderança.</div>
+    <div class="principle-card">Como "liderar a cadeia" — informar e apoiar o próprio chefe, além de orientar a equipe — evita atritos e falhas de comunicação.</div>
+    <div class="principle-card">Por que descentralizar o comando dá autonomia a quem está na linha de frente sem perder o alinhamento com o quadro geral.</div>
+    <div class="principle-card">Como transformar padrões em algo real: o que o líder tolera pesa mais do que o que ele diz ou escreve.</div>
+    <div class="principle-card">Por que disciplina e procedimentos claros aumentam a liberdade de ação da equipe em situações de pressão.</div>
+  </div>
+
+  <h2>Por que vale a pena ler</h2>
+  <ul class="benefits-list">
+    <li>Escrito por quem liderou em combate e depois ensinou liderança a empresas de vários portes.</li>
+    <li>Cada capítulo une uma história real a um princípio prático, o que torna a leitura envolvente e aplicável.</li>
+    <li>Serve tanto para gestores quanto para quem não tem cargo de liderança, mas quer assumir mais responsabilidade.</li>
+    <li>Ganhou uma sequência, A Dicotomia da Liderança, que equilibra os desafios do mesmo conceito.</li>
+  </ul>
+
+  <div class="who-box">
+    <h3>Para quem é este livro</h3>
+    <p>Para líderes de equipe, gestores, empreendedores e qualquer pessoa que queira parar de culpar o contexto e assumir o controle dos próprios resultados.</p>
+  </div>
+
+  <div class="cta-banner">
+    <h3>Pronto para assumir a responsabilidade total pelos seus resultados?</h3>
+    <p>Edição da Alta Books, em capa mole, disponível no Mercado Livre.</p>
+    <a href="https://meli.la/2oJhmuY" class="btn btn--primary" target="_blank" rel="noopener sponsored">Ver preço no Mercado Livre</a>
+  </div>
+
+  <h2>Perguntas frequentes</h2>
+  <div class="faq">
+    <details>
+      <summary>Preciso ser gestor ou ter interesse em vida militar pra aproveitar o livro?</summary>
+      <p>Não. Os episódios vêm do combate, mas cada capítulo traduz o princípio para o dia a dia de qualquer equipe ou organização.</p>
+    </details>
+    <details>
+      <summary>"Responsabilidade extrema" significa se culpar por tudo?</summary>
+      <p>A ideia é assumir a responsabilidade pelo que está ao seu alcance e pela forma como você lidera e se comunica, em vez de procurar culpados externos.</p>
+    </details>
+    <details>
+      <summary>Esse livro tem continuação?</summary>
+      <p>Sim, os autores lançaram A Dicotomia da Liderança, que trata de como equilibrar os desafios da responsabilidade extrema.</p>
+    </details>
+  </div>
+
+  <p class="disclosure">Este site contém um link de afiliado do Mercado Livre. Se você comprar o livro através dele, podemos receber uma pequena comissão, sem nenhum custo adicional para você.</p>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Responsabilidade Extrema — Resenha. Este site participa do programa de afiliados do Mercado Livre.</p>
+  </div>
+</footer>
+
+</body>
+</html>
